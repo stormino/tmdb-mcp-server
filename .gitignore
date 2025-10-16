@@ -1,0 +1,39 @@
+# Binaries
+tmdb-mcp-server
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test files
+*.test
+*.out
+coverage.out
+
+# Go workspace
+go.work
+go.work.sum
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Config files
+config.json
+claude_desktop_config.json
+
+# Claude Code
+CLAUDE.md
+.claude/
