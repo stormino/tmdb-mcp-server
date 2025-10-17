@@ -4,13 +4,13 @@ A Model Context Protocol (MCP) server that provides Claude and other MCP clients
 
 ## Features
 
-- 🎬 Search movies by title
-- 📊 Get detailed movie information
-- 🔥 Discover trending movies
-- 👤 Search actors and directors
-- 🎭 Get person details and filmography
-- 💡 Get movie recommendations
-- 🔍 Advanced movie discovery with filters
+- Search movies by title
+- Get detailed movie information
+- Discover trending movies
+- Search actors and directors
+- Get person details and filmography
+- Get movie recommendations
+- Advanced movie discovery with filters
 
 ## Dual Mode Support
 
@@ -21,7 +21,7 @@ This server works in two modes:
 
 ## Prerequisites
 
-- Go 1.21 or later
+- Go 1.25 or later
 - TMDB API key ([Get one here](https://www.themoviedb.org/settings/api))
 
 ## Installation
