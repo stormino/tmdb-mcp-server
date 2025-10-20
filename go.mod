@@ -1,6 +1,6 @@
 module github.com/stormino/tmdb-mcp-server
 
-go 1.25.1
+go 1.25
 
 require (
 	github.com/cyruzin/golang-tmdb v1.8.2
