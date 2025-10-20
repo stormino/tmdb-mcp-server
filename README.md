@@ -297,9 +297,29 @@ make lint
 
 ## Docker Support
 
-The Dockerfile includes two build targets: `stdio` (default) and `http`.
+The Dockerfile includes two build targets: `stdio` (default) and `http`. Pre-built images are automatically published to GitHub Container Registry.
 
-### Quick Start
+### Using Pre-built Images
+
+```bash
+# Pull and run stdio mode (default)
+docker run -e TMDB_API_KEY=your_key ghcr.io/stormino/tmdb-mcp-server:latest
+
+# Pull and run HTTP mode
+docker run -p 8080:8080 -e TMDB_API_KEY=your_key ghcr.io/stormino/tmdb-mcp-server:http
+
+# Use a specific version
+docker run -e TMDB_API_KEY=your_key ghcr.io/stormino/tmdb-mcp-server:v1.0.0
+docker run -p 8080:8080 -e TMDB_API_KEY=your_key ghcr.io/stormino/tmdb-mcp-server:v1.0.0-http
+```
+
+Available image tags:
+- `latest` / `stdio` - Latest stdio mode build from main branch
+- `http` - Latest HTTP mode build from main branch
+- `v*` - Stdio mode version tags (e.g., `v1.0.0`, `v1.1.0`)
+- `v*-http` - HTTP mode version tags (e.g., `v1.0.0-http`)
+
+### Building from Source
 
 ```bash
 # Build default stdio image
@@ -326,11 +346,15 @@ docker run -p 8080:8080 -e TMDB_API_KEY=your_key tmdb-mcp-server:http
 
 **HTTP mode (override stdio image):**
 ```bash
-docker run -p 8080:8080 -e TMDB_API_KEY=your_key tmdb-mcp-server --mode http --port 8080
+docker run -p 8080:8080 -e TMDB_API_KEY=your_key tmdb-mcp-server --mode http
 ```
 
-**Custom port:**
+**Custom port (HTTP image):**
 ```bash
+# Using HTTP_PORT environment variable
+docker run -p 3000:3000 -e TMDB_API_KEY=your_key -e HTTP_PORT=3000 tmdb-mcp-server:http
+
+# Or using command-line flag
 docker run -p 3000:3000 -e TMDB_API_KEY=your_key tmdb-mcp-server:http --port 3000
 ```
 
