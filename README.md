@@ -284,17 +284,54 @@ go test -v ./...
 make test
 ```
 
-## Docker Support (Coming Soon)
+### Code Quality
 
 ```bash
-# Build Docker image
+# Format code
+go fmt ./...
+# Or: make fmt
+
+# Run linter (requires golangci-lint)
+make lint
+```
+
+## Docker Support
+
+The Dockerfile includes two build targets: `stdio` (default) and `http`.
+
+### Quick Start
+
+```bash
+# Build default stdio image
 docker build -t tmdb-mcp-server .
 
-# Run in local mode
-docker run -e TMDB_API_KEY=your_key tmdb-mcp-server
+# Build HTTP mode image
+docker build --target http -t tmdb-mcp-server:http .
 
-# Run in HTTP mode
-docker run -p 8080:8080 -e HTTP_PORT=8080 -e TMDB_API_KEY=your_key tmdb-mcp-server
+# Or use make:
+make docker-build
+```
+
+### Running Containers
+
+**Stdio mode (default):**
+```bash
+docker run -e TMDB_API_KEY=your_key tmdb-mcp-server
+```
+
+**HTTP mode (using http target):**
+```bash
+docker run -p 8080:8080 -e TMDB_API_KEY=your_key tmdb-mcp-server:http
+```
+
+**HTTP mode (override stdio image):**
+```bash
+docker run -p 8080:8080 -e TMDB_API_KEY=your_key tmdb-mcp-server --mode http --port 8080
+```
+
+**Custom port:**
+```bash
+docker run -p 3000:3000 -e TMDB_API_KEY=your_key tmdb-mcp-server:http --port 3000
 ```
 
 ## Troubleshooting
@@ -325,7 +362,6 @@ Contributions are welcome! Areas for improvement:
 - Multi-language support
 - Pagination for large result sets
 - Authentication for HTTP mode
-- Docker deployment support for HTTP mode
 
 **Questions to Consider:**
 - Should we add streaming availability data? (requires additional API)

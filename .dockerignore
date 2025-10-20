@@ -1,0 +1,50 @@
+# Binaries
+tmdb-mcp-server
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test files
+*.test
+*.out
+coverage.out
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation (not needed in image)
+*.md
+!README.md
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# Config files
+config.json
+claude_desktop_config.json
+
+# Claude Code
+CLAUDE.md
+.claude/
+
+# Build artifacts
+vendor/
